@@ -11,7 +11,7 @@ export class AppComponent {
 
 usersMenu: MenuItem[]=[
   {text: 'List all Users', link: 'users/list'},
-  {text: 'Insert a User', link: 'not-yet-implemented'},
+  {text: 'Insert a User', link: 'users/insert'},
   {text: 'Delete a User', link: 'not-yet-implemented'},
   {text: 'Update a User', link: 'not-yet-implemented'}
 ]
