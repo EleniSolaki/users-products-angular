@@ -19,7 +19,7 @@ export class UsersInsertComponent {
       name: ['', Validators.required, ],
       surname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      adress: this.fb.group({
+      address: this.fb.group({
         area: ['', Validators.required],
         road: ['', Validators.required]
       }),
@@ -32,7 +32,7 @@ export class UsersInsertComponent {
     initPhone(): FormGroup{
       return this.fb.group({
         type:['', Validators.required],
-        number: ['', Validators.required, Validators.minLength(10)]
+        number: ['', [Validators.required, Validators.minLength(10)]]
       })
     }
 

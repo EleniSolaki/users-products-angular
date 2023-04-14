@@ -16,8 +16,8 @@ usersMenu: MenuItem[]=[
   {text: 'Update a User', link: 'not-yet-implemented'}
 ]
 productsMenu: MenuItem[]=[
-  {text: 'List all Products', link: 'not-yet-implemented'},
-  {text: 'Insert a Products', link: 'not-yet-implemented'},
+  {text: 'List all Products', link: 'products/list'},
+  {text: 'Insert a Product', link: 'products/insert'},
   {text: 'Delete a Products', link: 'not-yet-implemented'},
   {text: 'Update a Products', link: 'not-yet-implemented'}
 ]
