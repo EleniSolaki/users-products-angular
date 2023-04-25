@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { usersMenu, productsMenu } from 'shared';
 import { AppService } from './app.service';
+import { UiService } from 'ui';
 
 @Component({
   selector: 'app-root',
@@ -14,10 +15,17 @@ export class AppComponent {
 
   isLoggedIn$ = this.service.isLoggedIn$;
   loggedInFullname$ = this.service.loggedInUserFullname$
-  constructor( private service: AppService){}
+
+  alerts = this.uiService.alerts;
+
+  constructor( private service: AppService, private uiService: UiService){}
 
   onlogout(){
     this.service.logout()
+  }
+
+  onAlertDismiss(index: number){
+    this.uiService.alertDismiss(index)
   }
 
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User, UserAPIList, UserAPIOne } from 'shared';
 import { BehaviorSubject } from 'rxjs';
+import { UiService } from 'ui';
 
 
 const USER_API = 'https://codingfactory.ddns.net/api/user/'
@@ -16,15 +17,18 @@ export class AppService {
   private loggedInUserFullnameSubject = new BehaviorSubject<string>('');
   loggedInUserFullname$ = this.loggedInUserFullnameSubject.asObservable()
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private alertService: UiService) { }
 
   login(username: string, password: string){
     this.http.get<UserAPIOne>(`${USER_API}/findone/${username}`).subscribe((user)=> {
       if (user.data){
         this.loggedInSubject.next(user.data.password === password)
         this.loggedInUserFullnameSubject.next(`${user.data.name}${user.data.surname}`)
-      }
-    })
+      }else{
+      this.alertService.newAlert({type: 'danger', heading:'Authentication Error', text: 'Wrong username or password'})
+    }
+  }
+    )
   }
 
   logout() {
