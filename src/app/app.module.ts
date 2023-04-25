@@ -8,7 +8,6 @@ import { UiModule } from 'ui';
 
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DropdownComponent } from './dropdown/dropdown.component';
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 
@@ -29,8 +28,7 @@ const routes: Routes =[
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
-    DropdownComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
