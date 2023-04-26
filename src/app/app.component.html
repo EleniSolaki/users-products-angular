@@ -9,11 +9,13 @@
           </a>
           </strong>
       </span>
+
       <span *ngIf="!(isLoggedIn$ | async); else fullname"> Coding Factory</span>
       <ng-template #fullname>
         <span>{{loggedInFullname$ | async}}</span>
         <button class="ms-2 btn btn-danger btn-sm" (click)="onlogout()">Logout</button>
       </ng-template>
+
         <ul *ngIf="isLoggedIn$ | async; else loggedOut" class="navbar-nav">
           <lib-dropdown
             [dropdownLabel]="'Users'"
@@ -24,6 +26,7 @@
             [items]="productsMenu">
           </lib-dropdown>
         </ul>
+
         <ng-template #loggedOut>
           <a class="btn btn-primary btn-sm" routerLink="/login">Login</a>
         </ng-template>
@@ -31,11 +34,20 @@
   </div>
   <div class="row mt-2">
     <lib-alert
+      *ngIf="isLoading$ | async"
+      [type]="'info'"
+      [text]="'Communicating with backend ...'"
+      [spinner]="true">
+    </lib-alert>
+
+    <lib-alert
     *ngFor="let alert of alerts; index as i"
     [type]="alert.type ?? 'info'"
     [heading]="alert.heading"
     [text]="alert.text"
-    (dismiss)="onAlertDismiss(i)"></lib-alert>
+    (dismiss)="onAlertDismiss(i)">
+    </lib-alert>
+    
     <router-outlet></router-outlet>
   </div>
 </div>
